@@ -6,6 +6,13 @@ redis_manage_service: True              # Manage service (start/enabled)
 redis_uid:
 redis_configuration: /etc/redis/redis.conf  # Path to redis configuration
 redis_ppa: ppa:chris-lea/redis-server   # Set blank fot skip adding ppa
+
+# Set remi repo depending on the version of rhel
+# See: http://blog.remirepo.net/pages/Config-en
+remi_repo_el5: http://rpms.remirepo.net/enterprise/remi-release-5.rpm
+remi_repo_el6: http://rpms.remirepo.net/enterprise/remi-release-6.rpm
+remi_repo_el7: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
 redis_update_kernel: yes                # Set the kernel parameter for vm overcommit
 
 # Setup redis role

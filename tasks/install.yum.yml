@@ -1,7 +1,29 @@
 ---
 
+- name: yum | Set remi repo var (rhel7)
+  set_facts:
+    remi_repo={{ remi_repo_el7 }}
+  when: 
+    ansible_distribution_major_version == 7
+
+- name: yum | Set remi repo var (rhel6)
+  set_facts:
+    remi_repo={{ remi_repo_el6 }}
+  when: 
+    ansible_distribution_major_version == 6
+
+- name: yum | Set remi repo var (rhel5)
+  set_facts:
+    remi_repo={{ remi_repo_el5 }}
+  when: 
+    ansible_distribution_major_version == 5
+
 - name: yum | Setup remi repo
-  copy: dest=/etc/yum.repos.d/remi.repo src=remi.repo
+  yum: 
+    name={{ remi_repo }}
+    state=present
 
 - name: Install Redis
-  yum: name=redis enablerepo=remi
+  yum: 
+    name=redis
+    enablerepo=remi
